@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Bookstore";
+}
+<!--Import the model-->
+@model BooksViewModel
+
+<h1>Welcome to our bookstore</h1>
+
+<!--For each book pull the information for that book from the database-->
+@foreach (Book B in Model.Books)
+{
+   <h3>@B.Title</h3> 
+
+   <ul>
+       <li>Author: @B.Author</li>
+       <li>Publisher: @B.Publisher</li>
+       <li>ISBN: @B.Isbn</li>
+       <li>Classification: @B.Classification</li>
+       <li>Category: @B.Category</li>
+       <li>Page Count: @B.PageCount</li>
+       <li>Price: $@B.Price</li>
+   </ul>
+  <br/>
+}
+
+<!--Use our custom tag helper to make the tags to the new pages-->
+<div page-model="@Model.PageInfo" page-action=""></div>
+
+
