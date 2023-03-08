@@ -1,10 +1,13 @@
 ﻿@page
 @model Mission09_jnw53.Pages.CartModel
 @{
+    ViewData["Title"] = "Cart";
 }
-
-<h2>Your Cart</h2>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="alert alert-success">
+    <strong>Item succesfully added to cart</strong>
+</div>
+<h2>Your Cart <span class="glyphicon glyphicon-shopping-cart"></span></h2>
 <table class="table table-bordered table-striped">
 
     <thead>
@@ -37,5 +40,5 @@
 </table>
 
 <div>
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" href="@Model.ReturnUrl"><span class="glyphicon glyphicon-home"></span> Continue Shopping </a>
 </div>
