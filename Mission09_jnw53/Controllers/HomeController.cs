@@ -14,7 +14,7 @@ namespace Mission09_jnw53.Controllers
         {
             repo = temp;
         }
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string Category, int pageNum = 1)
         {
             int pageSize = 10;
             //Create the data to pass to the page
@@ -22,6 +22,7 @@ namespace Mission09_jnw53.Controllers
             {
                 //Sort the books by title and determine how many books go to each page
                 Books = repo.Books
+                .Where(p => p.Category == Category || Category == null)
                 .OrderBy(B => B.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
@@ -29,7 +30,9 @@ namespace Mission09_jnw53.Controllers
                 //Determine the page info to determine which books to display
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks = (Category == null 
+                    ? repo.Books.Count() 
+                    :repo.Books.Where(x => x.Category == Category).Count()),
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum,
                 }

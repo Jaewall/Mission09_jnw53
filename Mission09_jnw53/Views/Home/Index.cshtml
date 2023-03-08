@@ -9,21 +9,7 @@
 <!--For each book pull the information for that book from the database-->
 @foreach (Book B in Model.Books)
 {
-   <div class="card card-outline-primary m-1 p-1">
-        <div class="bg-faded p-1">
-            <h4>
-                @B.Title
-                <span class="badge bg-primary rounded-pill" style="float:right;">
-                <small>@B.Price.ToString("c")</small>
-                </span>
-            </h4>
-        </div>
-        <div class="card-text p-1">Author: @B.Author</div>
-        <div class="card-text p-1">ISBN: @B.Isbn</div>
-        <div class="card-text p-1">Classification: @B.Classification</div>
-        <div class="card-text p-1">Category: @B.Category</div>
-        <div class="card-text p-1">Page Count: @B.PageCount</div>
-    </div>
+    <partial name="ProjectSummary" model="B"/>
 }
 
 <!--Use our custom tag helper to make the tags to the new pages-->
