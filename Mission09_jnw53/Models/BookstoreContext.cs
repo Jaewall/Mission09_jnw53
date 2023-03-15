@@ -20,7 +20,7 @@ namespace Mission09_jnw53.Models
         }
 
         public DbSet<Book> Books { get; set; }
-
+        public DbSet<Checkout> Checkouts { get; set; }
        
     }
 }
